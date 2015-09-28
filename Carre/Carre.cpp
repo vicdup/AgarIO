@@ -7,7 +7,7 @@
 int worldSize = 2000;
 int initialFood = 100;
 using namespace std;
-//test
+
 
 bool checkCollision(Entity bubble, Entity entity)
 {
@@ -29,8 +29,7 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(800, 800), "Agar");
 	window.setFramerateLimit(30);
 	sf::View view(sf::Vector2f(300, 300), sf::Vector2f(800, 800));
-
-
+	window.setVerticalSyncEnabled(true);
 	//chrono
 	sf::Clock clock;
 	vector<Entity> lEntity;
@@ -49,6 +48,8 @@ int main()
 	// on fait tourner le programme tant que la fenêtre n'a pas été fermée
 	while (window.isOpen())
 	{
+
+
 		// on traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
 		sf::Event event;
 		while (window.pollEvent(event))
@@ -67,6 +68,7 @@ int main()
 		}
 
 		window.clear(sf::Color::White);
+
 		if (static_cast<int>(clock.getElapsedTime().asSeconds()) % 3 == 1)
 		{
 			entityGenerated = 0;
