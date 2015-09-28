@@ -1,22 +1,15 @@
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "Entity.h"
 
-class Bubble :public sf::CircleShape
+class Bubble :public Entity
 {
 public:
 	Bubble();
 	~Bubble();
 	void Move(float mouseX, float mouseY);
-	sf::Vector2f getCenter();
-	int getSize();
-	void Eat(int size);
+	void Eat(float size);
 
 private:
-	int m_size;
-	int m_speed;
-	int m_currentX;
-	int m_currentY;
-	std::string m_color;
-	int m_positionX;
-	int m_positionY;
+	float m_speed;
 };

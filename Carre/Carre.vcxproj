@@ -89,11 +89,12 @@
   <ItemGroup>
     <ClCompile Include="Bubble.cpp" />
     <ClCompile Include="Carre.cpp" />
-    <ClCompile Include="Food.cpp" />
+    <ClCompile Include="Entity.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Food.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Bubble.h" />
+    <ClInclude Include="Global.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
