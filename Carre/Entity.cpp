@@ -6,8 +6,8 @@
 Entity::Entity() : sf::CircleShape(5), m_currentX(rand() % worldSize + 1), m_currentY(rand() % worldSize + 1)
 {
 	setPosition(sf::Vector2f(m_currentX, m_currentY));
-	setFillColor(sf::Color::Blue);
-	m_size = 5;
+	setFillColor(sf::Color(rand() % 256, rand() % 256, rand() % 256));
+	setSize(5);
 }
 
 Entity::~Entity()
@@ -21,8 +21,13 @@ sf::Vector2f Entity
 	return r;
 }
 
-int Entity
-::getSize()
+void Entity::setSize(float radius)
+{
+	m_size = radius;
+	setRadius(radius);
+}
+
+int Entity::getSize()
 {
 	return m_size;
 }

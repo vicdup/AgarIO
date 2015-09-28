@@ -8,13 +8,9 @@ using namespace std;
 Bubble::Bubble(): Entity()
 {
 	m_currentY = 100;
-	m_speed = 5;
 	m_currentX=100;
 	setPosition(sf::Vector2f(m_currentX, m_currentY));
-	setRadius(10);
-	setFillColor(sf::Color::Red);
-	m_size = 20;
-
+	setSize(10);
 }
 
 Bubble::~Bubble()
@@ -34,10 +30,24 @@ void Bubble::Move(float mouseX, float mouseY)
 
 }
 
-void Bubble
-::Eat(float size)
+void Bubble::Eat(float size)
 {
 	m_size = sqrt(getRadius()*getRadius() + size*size);
-	setRadius(m_size);
-	m_speed = m_speed*0.95;
+	setSize(m_size);
+}
+
+void Bubble::setSize(float radius)
+{
+	setRadius(radius);
+	m_size = radius;
+	m_speed = 40 / radius;
+}
+
+Bubble Bubble::Split()
+{
+	Bubble bubble;
+	bubble.setSize(this->getSize() / sqrt(2));
+	this->setSize(bubble.getSize());
+	bubble.setPosition(getPosition().x + 10, getPosition().y + 10);
+	return bubble;
 }

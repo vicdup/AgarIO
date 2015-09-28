@@ -27,9 +27,10 @@ int main()
 {
 	// création de la fenêtre
 	sf::RenderWindow window(sf::VideoMode(800, 800), "Agar");
-	window.setFramerateLimit(30);
 	sf::View view(sf::Vector2f(300, 300), sf::Vector2f(800, 800));
 	window.setVerticalSyncEnabled(true);
+	window.setFramerateLimit(30);
+
 	//chrono
 	sf::Clock clock;
 	vector<Entity> lEntity;
@@ -60,6 +61,10 @@ int main()
 				// fenêtre fermée
 			case sf::Event::Closed:
 				window.close();
+				break;
+
+			case sf::Event::KeyPressed:
+				lBubble.push_back(bubble.Split());
 				break;
 
 			default:

@@ -11,6 +11,7 @@ public:
 	~Entity();
 	sf::Vector2f getCenter();
 	int getSize();
+	void setSize(float radius);
 
 protected:
 	float m_size;
