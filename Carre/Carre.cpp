@@ -37,6 +37,7 @@ int main()
 	vector<Bubble> lBubble;
 	Bubble bubble;
 	lBubble.push_back(bubble);
+	int lBubblesize;
 
 	int entityGenerated = 0;
 
@@ -49,7 +50,8 @@ int main()
 	// on fait tourner le programme tant que la fenêtre n'a pas été fermée
 	while (window.isOpen())
 	{
-
+		float mouseX = static_cast<float>(window.mapPixelToCoords(sf::Mouse::getPosition(window)).x);
+		float mouseY = static_cast<float>(window.mapPixelToCoords(sf::Mouse::getPosition(window)).y);
 
 		// on traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
 		sf::Event event;
@@ -64,7 +66,14 @@ int main()
 				break;
 
 			case sf::Event::KeyPressed:
-				lBubble.push_back(bubble.Split());
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+				{
+					lBubblesize = lBubble.size();
+					for (int i(0); i < lBubblesize; ++i)
+					{
+						lBubble.push_back(lBubble[i].Split(mouseX, mouseY));
+					}
+				}
 				break;
 
 			default:
@@ -93,8 +102,7 @@ int main()
 		{
 			view.setCenter(lBubble[i].getCenter());
 			window.draw(lBubble[i]);
-			float mouseX = static_cast<float>(window.mapPixelToCoords(sf::Mouse::getPosition(window)).x);
-			float mouseY = static_cast<float>(window.mapPixelToCoords(sf::Mouse::getPosition(window)).y);
+
 			lBubble[i].Move(mouseX, mouseY);
 
 			for (int u(0); u < lEntity.size(); ++u)

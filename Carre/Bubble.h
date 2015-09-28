@@ -9,7 +9,7 @@ public:
 	~Bubble();
 	void Move(float mouseX, float mouseY);
 	void Eat(float size);
-	Bubble Split();
+	Bubble Split(float mouseX, float mouseY);
 	void setSize(float radius);
 
 private:
