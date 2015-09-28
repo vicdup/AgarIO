@@ -1,11 +1,20 @@
 #include "Bubble.h"
+#include "Global.h"
 #include <SFML/Graphics.hpp>
 
-Bubble::Bubble(): sf::CircleShape(20),m_currentX(100),m_currentY(100),m_speed(5)
+using namespace std;
+
+
+Bubble::Bubble(): Entity()
 {
+	m_currentY = 100;
+	m_speed = 5;
+	m_currentX=100;
 	setPosition(sf::Vector2f(m_currentX, m_currentY));
+	setRadius(10);
 	setFillColor(sf::Color::Red);
 	m_size = 20;
+
 }
 
 Bubble::~Bubble()
@@ -25,23 +34,10 @@ void Bubble::Move(float mouseX, float mouseY)
 
 }
 
-sf::Vector2f Bubble
-::getCenter()
-{
-	sf::Vector2f r(this->getPosition().x + m_size, this->getPosition().y + m_size);
-	return r;
-}
-
-int Bubble
-::getSize()
-{
-	return m_size;
-}
-
 void Bubble
-::Eat(int size)
+::Eat(float size)
 {
-	setRadius(getRadius()+2);
-	m_size = getRadius();
-	m_speed = m_speed;
+	m_size = sqrt(getRadius()*getRadius() + size*size);
+	setRadius(m_size);
+	m_speed = m_speed*0.95;
 }
